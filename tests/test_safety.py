@@ -1,7 +1,7 @@
-"""
-Test Suite for Safety Controls and Guardrails
-Tests content filtering, validation, and rate limiting
-"""
+import os
+import warnings
+os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
+warnings.filterwarnings('ignore')
 
 import unittest
 from src.guardrails.safety_controls import SafetyGuardrails

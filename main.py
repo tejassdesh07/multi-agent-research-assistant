@@ -1,9 +1,10 @@
 import os
 import sys
 import warnings
-warnings.filterwarnings('ignore', category=DeprecationWarning)
-warnings.filterwarnings('ignore', module='pydantic')
-warnings.filterwarnings('ignore', module='pkg_resources')
+
+os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
+warnings.filterwarnings('ignore')
+
 from dotenv import load_dotenv
 from src.orchestrator import MultiAgentOrchestrator
 

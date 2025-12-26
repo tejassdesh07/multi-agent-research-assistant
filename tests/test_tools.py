@@ -1,10 +1,9 @@
-"""
-Test Suite for Tool Functionality
-Tests web search, memory, and file system tools
-"""
+import os
+import warnings
+os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
+warnings.filterwarnings('ignore')
 
 import unittest
-import os
 import json
 from src.tools.web_search_tool import WebSearchTool
 from src.tools.memory_tool import MemoryTool

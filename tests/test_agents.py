@@ -1,7 +1,7 @@
-"""
-Test Suite for Agent Functionality
-Tests research agent and summary agent capabilities
-"""
+import os
+import warnings
+os.environ['PYTHONWARNINGS'] = 'ignore::DeprecationWarning'
+warnings.filterwarnings('ignore')
 
 import unittest
 from unittest.mock import Mock, patch, MagicMock
