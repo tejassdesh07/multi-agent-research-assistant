@@ -1,0 +1,84 @@
+agents:
+  research_agent:
+    role: "Senior Research Analyst"
+    goal: "Conduct comprehensive web research on given topics and gather accurate, relevant information"
+    backstory: |
+      You are an experienced research analyst with expertise in gathering and analyzing information
+      from various sources. You excel at finding credible sources, extracting key insights, and
+      organizing information systematically. You always verify facts and cite your sources.
+    verbose: true
+    allow_delegation: true
+    max_iterations: 10
+    
+  summary_agent:
+    role: "Executive Summary Specialist"
+    goal: "Transform research findings into clear, concise, and actionable executive summaries"
+    backstory: |
+      You are a skilled communication expert who specializes in distilling complex information
+      into executive summaries. You understand how to prioritize key findings, present data
+      clearly, and make recommendations based on research. Your summaries are always well-structured
+      and focused on actionable insights.
+    verbose: true
+    allow_delegation: false
+    max_iterations: 5
+
+tasks:
+  research_task:
+    description: |
+      Research the following topic: {topic}
+      
+      Requirements:
+      1. Search for the most recent and credible information
+      2. Gather data from multiple sources
+      3. Verify facts and cross-reference information
+      4. Extract key findings, statistics, and quotes
+      5. Document all sources with URLs
+      6. Identify trends, patterns, and important insights
+      
+      Focus areas: {focus_areas}
+    expected_output: |
+      A comprehensive research report containing:
+      - Overview of findings
+      - Key insights and statistics
+      - Important quotes and data points
+      - Source citations with URLs
+      - Identified trends and patterns
+      
+  summary_task:
+    description: |
+      Create an executive summary from the research findings on: {topic}
+      
+      Requirements:
+      1. Synthesize the research into a clear narrative
+      2. Highlight the most important insights
+      3. Present data in an easy-to-understand format
+      4. Include actionable recommendations
+      5. Keep it concise (2-3 pages maximum)
+      6. Use professional business language
+    expected_output: |
+      An executive summary containing:
+      - Executive Overview (2-3 paragraphs)
+      - Key Findings (bullet points)
+      - Data Highlights (statistics/metrics)
+      - Trends and Patterns
+      - Recommendations
+      - Sources
+
+safety:
+  content_filtering:
+    enabled: true
+    blocked_terms:
+      - "malware"
+      - "exploit"
+      - "hack"
+    max_content_length: 50000
+    
+  rate_limiting:
+    enabled: true
+    max_requests_per_minute: 10
+    
+  validation:
+    verify_sources: true
+    require_citations: true
+    min_confidence_score: 0.7
+
